@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Wind River
+name: windriver-rest-api
+version: 0.1

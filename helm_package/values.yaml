@@ -1,0 +1,14 @@
+# We launch 2 deployments because we have stateless app and this example
+# demonstrates that the app can handle parallel requests if there is a lot of clients
+replicaCount: 2
+image:
+  repository: chestnutkugelblitz/windriver-api
+  pullPolicy: Always
+service:
+  name: restapi-svc-windriver
+  nodeport: 30802
+  namespace: default
+HTTPport: 8080   
+tag: 0.1
+selector: windriverapi
+minimum_score: 9.0

@@ -1,0 +1,75 @@
+swagger: "2.0"
+info:
+  description: Swagger file which defined API structure
+  version: "1.0.0"
+  title: WindRiver test API
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+basePath: "/api"
+paths:
+  /encrypt:
+    post:
+      operationId: api.string_processing.encrypt_str
+      parameters:
+        - in: 'body'
+          name: 'input_json'
+          description: 'string to encrypt it'
+          schema:
+             $ref: '#/definitions/inputJson'
+      summary: "the endpoint which encrypts user's string"
+      description: "Encrypt string"
+      responses:
+        201:
+          description: "Succeful encrypted"
+          schema:
+            $ref: '#/definitions/outputJson'
+        415:
+          description: "Can't encrypt this data"
+          schema:
+            type: string
+
+  /decrypt:
+    post:
+      operationId: api.string_processing.decrypt_str
+      parameters:
+        - in: 'body'
+          name: 'input_json'
+          description: 'string to encrypt it'
+          schema:
+             $ref: '#/definitions/inputJson'
+      description: "Decrypt string"
+      responses:
+        201:
+          description: "Succeful decrypted"
+          schema:
+            $ref: '#/definitions/outputJson'
+        415:
+          description: "Can't decrypt this data"
+          schema:
+            type: string
+  /health:
+    get:
+      operationId: api.string_processing.welcome_endpoint
+      responses:
+        204:
+          description: "system is healthy"
+definitions:
+  inputJson:
+    type: object
+    properties:
+      Input: { type: string }
+  outputJson:
+    type: object
+    properties:
+      Input:
+        type: string
+      Output:
+        type: string
+      Status:
+        type: string
+      Message:
+        type: string
+
+

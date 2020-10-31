@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Chart.Name }}
+  template:
+    metadata:
+      name: {{ .Chart.Name }}
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+      - name: {{ .Chart.Name }}
+        image: "{{ .Values.image.repository }}:{{ .Values.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.HTTPport }}
+        env:
+        # In this environment variable we pass API version to Flask
+        - name: serviceName
+          value: "{{ .Values.service.name }}"
+        - name: servicePort
+          value: "{{ .Values.HTTPport }}"
+        - name:  minimumScore
+          value: "{{ .Values.minimum_score }}"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: {{ .Values.HTTPport }}
+          initialDelaySeconds: 5
+          periodSeconds: 5
+

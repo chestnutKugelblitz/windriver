@@ -1,0 +1,10 @@
+# git dirs
+.git/
+.gitignore
+# backup files
+*.swp
+*.bak
+*.tmp
+*~
+#IDE
+.idea/
