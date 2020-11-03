@@ -7,15 +7,14 @@ This app written using Flask, swagger and connexion to work in kubernetes. It ha
 based in the base64 hash
 
 ## swaggler UI
-The app supports swaggler UI for automaticly generate documentation for endpoints. Also it can be helpful to 
-generate HTTP requests for API endpoints in the webinterface - more convinient way than do RAW cli requests 
-via curl
+The app supports swaggler UI for automatically generating documentation for endpoints. Also it can be helpful 
+to generate HTTP requests for API endpoints in the web interface - more convinient way than do RAW cli requests via curl
 
 ![swaggler UI](https://i.imgur.com/Tl7K2ai.png
 )
 
 ## swaggler 2.0 configuration, and Validation input/output data 
-The API itself described in the yaml file [windriver_api.py](/windriver_api.py)
+The API itself described in the yaml file [windriver-api.yml](/windriver-api.yml)
 regarding data validation, it's work of connexion, swaggler(work via declaration schema in the YAML). 
 But for double check I also use strict types (modern python3.8 feature) and, of cource, unit tests
 
